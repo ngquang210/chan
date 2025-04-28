@@ -1,0 +1,41 @@
+def tinh_toan(so_tai, so_xiu):
+    # Xác định cầu thuận
+    cau_thuan_xiu = [0, 2, 4, 6]
+    cau_thuan_tai = [1, 3, 5, 7]
+
+    # Tính điểm theo yêu cầu
+    tong = so_tai + so_xiu
+
+    # Trừ mốc Fibonacci
+    if tong >= 18:
+        tong -= 18
+    elif tong >= 12:
+        tong -= 12
+    elif tong >= 5:
+        tong -= 5
+
+    # Dự đoán kết quả
+    if tong in cau_thuan_xiu:
+        ket_qua = "Xỉu"
+    elif tong in cau_thuan_tai:
+        ket_qua = "Tài"
+    else:
+        ket_qua = "Không xác định (có thể cần xem lại cầu nghịch)"
+
+    return ket_qua, tong
+
+def main():
+    print("TOOL TÀI XỈU THEO FIBONACCI")
+    try:
+        so_tai = int(input("Nhập số Tài (T): "))
+        so_xiu = int(input("Nhập số Xỉu (X): "))
+
+        ket_qua, diem = tinh_toan(so_tai, so_xiu)
+
+        print(f"Điểm sau khi tính: {diem}")
+        print(f"Dự đoán phiên tiếp theo: {ket_qua}")
+    except ValueError:
+        print("Bạn phải nhập số nguyên!")
+
+if __name__ == "__main__":
+    main()
